@@ -19,7 +19,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "dev.virusnest.virusClient.VirusClient"
+      "dev.virusnest.virusclient.VirusClient"
     ]
   },
   "mixins": [

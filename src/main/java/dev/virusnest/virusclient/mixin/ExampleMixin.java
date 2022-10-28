@@ -1,6 +1,6 @@
-package dev.virusnest.virusClient.mixin;
+package dev.virusnest.virusclient.mixin;
 
-import dev.virusnest.virusClient.VirusClient;
+import dev.virusnest.virusclient.VirusClient;
 import net.minecraft.client.gui.screen.TitleScreen;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

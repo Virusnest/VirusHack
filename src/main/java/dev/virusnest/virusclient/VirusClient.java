@@ -1,7 +1,7 @@
-package dev.virusnest.virusClient;
+package dev.virusnest.virusclient;
 
-import dev.virusnest.virusClient.module.Module;
-import dev.virusnest.virusClient.module.ModuleManager;
+import dev.virusnest.virusclient.module.Module;
+import dev.virusnest.virusclient.module.ModuleManager;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.client.MinecraftClient;
 import org.lwjgl.glfw.GLFW;
@@ -21,23 +21,29 @@ public class VirusClient implements ModInitializer {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
-		getClass().getClassLoader().getResourceAsStream("");
+		//getClass().getClassLoader().getResourceAsStream("");
 		// LOGGER.info("!");
+	}
+
+	public void postInit() {
+		//LOGGER.info("Postinit");
+		ModuleManager.genModules(ModuleManager.modules());
+		//LOGGER.info("Postinit");
 	}
 	public void onTick(){
 		if (mc.player != null){
-			for(Module module : ModuleManager.INSTANCE.getEnabledModules()){
+			for(Module module : ModuleManager.getEnabledModules()){
 				module.onTick();
+				//LOGGER.info("Ticked");
 			}
 		}
-		//LOGGER.info("Ticked");
 	}
 
 	public void onKeyPress(int key, int action){
 		if(action == GLFW.GLFW_PRESS){
-			//LOGGER.info(key+" Was Pressed");
-			for(Module module : ModuleManager.INSTANCE.getModules()){
+			for(Module module : ModuleManager.getModules()){
 				if (key == module.getKey()) module.toggle();
+				//LOGGER.info(key+" Was Pressed");
 			}
 		}
 	}

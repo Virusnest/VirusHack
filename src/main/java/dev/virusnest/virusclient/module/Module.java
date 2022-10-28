@@ -1,6 +1,5 @@
-package dev.virusnest.virusClient.module;
+package dev.virusnest.virusclient.module;
 
-import jdk.jfr.Category;
 import net.minecraft.client.MinecraftClient;
 
 public class Module {

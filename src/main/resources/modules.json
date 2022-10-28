@@ -1,0 +1,6 @@
+{
+  "package": "dev.virusnest.module.mods",
+  "modules": [
+    "movement.Flight"
+  ]
+}
