@@ -69,7 +69,7 @@ public class ClientConnectionMixin {
             }
 
             if(packet instanceof WorldBorderInitializeS2CPacket){
-                VirusClient.LOGGER.info("WorldBorderInitializeS2CPacket called and callback blocked!");
+                VirusClient.LOGGER.info("WorldBorderSizeChangedS2CPacket called and callback blocked!");
                 callback.cancel();
             }
         }

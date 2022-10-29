@@ -19,7 +19,7 @@ public class MixinMovementPacket {
     @ModifyVariable(method = "<init>(DDDFFZZZ)V", at = @At("HEAD"), ordinal = 0, argsOnly = true) // Credits: https://github.com/ProtoByter/kaihack, doesn't glitch pitch and yaw + if rounding error we restore the last packet
     private static double modifyX(double value)
     {
-        if(ModuleManager.getModule(OverflowBypass.class).isEnabled()) return value;
+        if(!ModuleManager.getModule(OverflowBypass.class).isEnabled()) return value;
 
         double modifyX = (double) (long)(value * 100.0) / 100.0;
 
@@ -34,7 +34,7 @@ public class MixinMovementPacket {
     @ModifyVariable(method = "<init>(DDDFFZZZ)V", at = @At("HEAD"), ordinal = 2, argsOnly = true)
     private static double modifyZ(double value)
     {
-        if(ModuleManager.getModule(OverflowBypass.class).isEnabled()) return value;
+        if(!ModuleManager.getModule(OverflowBypass.class).isEnabled()) return value;
 
         double modifyZ = (double) (long)(value * 100.0) / 100.0;
 

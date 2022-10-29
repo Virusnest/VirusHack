@@ -9,7 +9,8 @@
     "ClientMixin",
     "KeybindMixin",
     "MixinMovementPacket",
-    "InGameHudMixin"
+    "InGameHudMixin",
+    "ClientConnectionMixin"
   ],
   "injectors": {
     "defaultRequire": 1

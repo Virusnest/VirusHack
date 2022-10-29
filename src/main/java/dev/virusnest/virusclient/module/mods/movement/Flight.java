@@ -18,8 +18,10 @@ public class Flight extends Module{
 
     @Override
     public void onDisable() {
-        mc.player.getAbilities().allowFlying = false;
-        mc.player.getAbilities().flying=false;
+        if (mc.player != null) {
+            mc.player.getAbilities().allowFlying = false;
+            mc.player.getAbilities().flying = false;
+        }
         super.onDisable();
     }
 }

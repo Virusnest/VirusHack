@@ -59,7 +59,7 @@ public class ModuleManager {
         return modules.get(class_);
     }
 
-    public static Iterable<Module> getEnabledModules(){
+    public static List<Module> getEnabledModules(){
         List<Module> enabled = new ArrayList<>();
         for(Module module : getModules()) {
             //VirusClient.LOGGER.info(module.toString());
@@ -73,6 +73,7 @@ public class ModuleManager {
     public static List<String> modules(){
         return Arrays.asList(
                 "movement.Flight",
+                "movement.NoFall",
                 "exploit.OverflowBypass",
                 "render.FullBright"
         );
