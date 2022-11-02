@@ -1,20 +1,25 @@
 package dev.virusnest.virusclient.mixin;
 ;
 import dev.virusnest.virusclient.VirusClient;
+import dev.virusnest.virusclient.module.Module;
 import dev.virusnest.virusclient.module.ModuleManager;
 import dev.virusnest.virusclient.module.mods.exploit.OverflowBypass;
 import io.netty.channel.Channel;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.screen.pack.ResourcePackOrganizer;
 import net.minecraft.entity.Entity;
 import net.minecraft.network.ClientConnection;
 import net.minecraft.network.Packet;
+import net.minecraft.network.PacketCallbacks;
 import net.minecraft.network.listener.PacketListener;
+import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
 import net.minecraft.network.packet.c2s.play.VehicleMoveC2SPacket;
 import net.minecraft.network.packet.s2c.play.GameStateChangeS2CPacket;
 import net.minecraft.network.packet.s2c.play.WorldBorderInitializeS2CPacket;
 import net.minecraft.network.packet.s2c.play.WorldBorderSizeChangedS2CPacket;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.gen.Invoker;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
@@ -33,6 +38,7 @@ public class ClientConnectionMixin {
             VehicleMoveC2SPacket pkt = (VehicleMoveC2SPacket) packet;
 
             Entity vehicle = mc.player.getVehicle();
+            mc.player.setPos((double) (long)(pkt.getX() * 100.0) / 100.0, pkt.getY(), (double) (long)(pkt.getZ() * 100.0) / 100.0);
 
             vehicle.setPos((double) (long)(pkt.getX() * 100.0) / 100.0, pkt.getY(), (double) (long)(pkt.getZ() * 100.0) / 100.0); // Hope this works
 
@@ -40,7 +46,6 @@ public class ClientConnectionMixin {
                     vehicle
             );
         }
-
         return packet;
 
     }
@@ -74,4 +79,7 @@ public class ClientConnectionMixin {
             }
         }
     }
+
+
 }
+

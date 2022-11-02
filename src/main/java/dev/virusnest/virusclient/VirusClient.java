@@ -2,8 +2,11 @@ package dev.virusnest.virusclient;
 
 import dev.virusnest.virusclient.module.Module;
 import dev.virusnest.virusclient.module.ModuleManager;
+import dev.virusnest.virusclient.ui.screens.clickgui.ClickGui;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.client.screen.v1.Screens;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.screen.Screen;
 import org.lwjgl.glfw.GLFW;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,6 +48,8 @@ public class VirusClient implements ModInitializer {
 				if (key == module.getKey()) module.toggle();
 				//LOGGER.info(key+" Was Pressed");
 			}
+
+			if(key == GLFW.GLFW_KEY_RIGHT_SHIFT) mc.setScreen(ClickGui.INSTANCE);
 		}
 	}
 }

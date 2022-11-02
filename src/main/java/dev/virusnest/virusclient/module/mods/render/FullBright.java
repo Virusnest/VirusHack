@@ -1,6 +1,8 @@
 package dev.virusnest.virusclient.module.mods.render;
 
 import dev.virusnest.virusclient.module.Module;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import org.lwjgl.glfw.GLFW;
 
 public class FullBright extends Module {
@@ -12,18 +14,6 @@ public class FullBright extends Module {
     @Override
     public void onTick() {
         super.onTick();
-    }
-
-    @Override
-    public void onEnable() {
-        brightness = mc.options.getGamma().getValue();
-        mc.options.getGamma().setValue(10000d);
-        super.onEnable();
-    }
-
-    @Override
-    public void onDisable() {
-        mc.options.getGamma().setValue(brightness);
-        super.onDisable();
+        mc.player.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 500, 0));
     }
 }

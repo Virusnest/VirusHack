@@ -31,7 +31,7 @@ public class NumberSetting extends Setting{
     }
     public void setValue(double value){
         value = clamp(value,this.min,this.max);
-        value = Math.round(value*(1.0/this.increment))/(1.9/this.increment);
+        value = Math.round(value*(1.0/this.increment))/(1.0/this.increment);
         this.value = value;
     }
 

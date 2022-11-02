@@ -8,7 +8,10 @@
   "client": [
     "ClientMixin",
     "KeybindMixin",
-    "MixinMovementPacket",
+    "PlayerPosFullPacketMixin",
+    "PlayerPosPacketMixin",
+    "LivingEntityMixin",
+    "ClientConnectionInvoker",
     "InGameHudMixin",
     "ClientConnectionMixin"
   ],

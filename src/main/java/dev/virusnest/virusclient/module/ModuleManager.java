@@ -70,11 +70,24 @@ public class ModuleManager {
         return enabled;
     }
 
+    public static List<Module> getModulesInCategory(Module.Category category){
+        List<Module> categoryModules = new ArrayList<>();
+
+        for(Module module : getModules()){
+            if(module.getCategory() == category){
+                categoryModules.add(module);
+            }
+        }
+        return categoryModules;
+    }
+
     public static List<String> modules(){
         return Arrays.asList(
                 "movement.Flight",
                 "movement.NoFall",
+                "movement.Speed",
                 "exploit.OverflowBypass",
+                "exploit.WorldGuardBypass",
                 "render.FullBright"
         );
     }
