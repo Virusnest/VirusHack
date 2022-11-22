@@ -86,9 +86,12 @@ public class ModuleManager {
                 "movement.Flight",
                 "movement.NoFall",
                 "movement.Speed",
+                "combat.KillAura",
                 "exploit.OverflowBypass",
                 "exploit.WorldGuardBypass",
-                "render.FullBright"
+                "render.FullBright",
+                "world.DeathLogs",
+                "world.AutoFarm"
         );
     }
 }

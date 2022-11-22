@@ -1,5 +1,6 @@
 package dev.virusnest.virusclient.module.mods.movement;
 
+import dev.virusnest.virusclient.VirusClient;
 import dev.virusnest.virusclient.module.Module;
 import dev.virusnest.virusclient.module.settings.BooleanSetting;
 import dev.virusnest.virusclient.module.settings.ModeSetting;
@@ -21,16 +22,18 @@ public class Flight extends Module{
     int floatingTick;
     @Override
     public void onTick(){
+        
         mc.player.getAbilities().allowFlying = true;
         mc.player.getAbilities().setFlySpeed(speed.getValueFloat());
         if(mc.player.getPos().getY()>=oldY-0.0433d){
             floatingTick++;
         }
         oldY = mc.player.getPos().getY();
-        if((floatingTick >20 && antiKick.isEnabled())
+        if((floatingTick >10 && antiKick.isEnabled())
                 &&mc.player.world.getBlockState(new BlockPos(mc.player.getPos().subtract(0,0.0433d,0))).isAir()) {
-            PacketHelper.sendPosition((mc.player.getPos().subtract(0.0,0.0433d,0.0)));
+            PacketHelper.sendPosition(mc.player.getPos().subtract(0.0,0.05d,0.0));
             floatingTick =0;
+            VirusClient.LOGGER.info("fell");
         }
         super.onTick();
     }
@@ -38,7 +41,7 @@ public class Flight extends Module{
     @Override
     public void onDisable() {
         if (mc.player != null) {
-            mc.player.getAbilities().allowFlying = false;
+            mc.player.getAbilities().allowFlying = mc.player.isCreative();
             mc.player.getAbilities().flying = false;
         }
         super.onDisable();

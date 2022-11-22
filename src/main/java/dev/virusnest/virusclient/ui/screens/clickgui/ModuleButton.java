@@ -52,7 +52,7 @@ public class ModuleButton {
         DrawableHelper.fill(matrices, parent.x, parent.y +offset,parent.x + parent.width,parent.y+ parent.height+offset, new Color(0,0,0,160).getRGB());
         if(isHovered(mouseX,mouseY)) DrawableHelper.fill(matrices, parent.x, parent.y +offset,parent.x + parent.width,parent.y+ parent.height+offset, new Color(0,0,0,160).getRGB());
         int textOffset = (parent.height/2)-(parent.mc.textRenderer.fontHeight/2);
-        parent.mc.textRenderer.drawWithShadow(matrices,module.getName(),parent.x+textOffset, parent.y+offset+textOffset,Color.decode("#cdd6f4").getRGB());
+        parent.mc.textRenderer.drawWithShadow(matrices,module.getName(),parent.x+textOffset, parent.y+offset+textOffset,module.isEnabled()? Color.decode("#89dceb").getRGB():Color.decode("#cdd6f4").getRGB());
         if(extended) {
             for (Component component : components) {
                 component.render(matrices, mouseX, mouseY, delta);

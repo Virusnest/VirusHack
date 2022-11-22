@@ -19,6 +19,7 @@ public class ModeBox extends Component{
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta){
         super.render(matrices,mouseX,mouseY,delta);
         DrawableHelper.fill(matrices, parent.parent.x, parent.parent.y +parent.offset+offset,parent.parent.x + parent.parent.width,parent.parent.y+ parent.parent.height+parent.offset+offset, new Color(0,0,0,160).getRGB());
+        if(isHovered(mouseX,mouseY)) DrawableHelper.fill(matrices, parent.parent.x, parent.parent.y +parent.offset+offset,parent.parent.x + parent.parent.width,parent.parent.y+ parent.parent.height+parent.offset+offset, new Color(0,0,0,160).getRGB());
         int textOffset = (parent.parent.height/2)-(mc.textRenderer.fontHeight/2);
         mc.textRenderer.drawWithShadow(matrices,modeSet.getName()+": " + modeSet.getMode(), parent.parent.x+textOffset,parent.parent.y+textOffset+offset+parent.offset,Color.decode("#cdd6f4").getRGB());
     }

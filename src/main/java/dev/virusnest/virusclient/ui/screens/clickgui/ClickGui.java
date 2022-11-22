@@ -1,11 +1,13 @@
 package dev.virusnest.virusclient.ui.screens.clickgui;
 
 import dev.virusnest.virusclient.module.Module;
+import dev.virusnest.virusclient.util.io.ConfigManager;
 import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,12 +21,24 @@ public class ClickGui extends Screen {
         super(Text.literal("Click GUI"));
         frames = new ArrayList<>();
         int offset = 20;
+
         for(Module.Category category : Module.Category.values()){
             frames.add(new Frame(category,offset,20,100,20));
             offset+= 120;
         }
     }
     public static final ClickGui INSTANCE = new ClickGui();
+
+    @Override
+    public void removed() {
+        try {
+            ConfigManager.saveConfig();
+            ConfigManager.saveClickGui(frames);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        super.removed();
+    }
 
     @Override
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta){

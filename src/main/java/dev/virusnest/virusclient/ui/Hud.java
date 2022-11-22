@@ -23,7 +23,7 @@ public class Hud {
         enabled.sort(Comparator.comparingInt(m -> (int)mc.textRenderer.getWidth(((Module)m).getName())).reversed());
 
         for(Module module : enabled){
-            mc.textRenderer.drawWithShadow(matrices,module.getName(), 4, 10+(index * mc.textRenderer.fontHeight), -1);
+            mc.textRenderer.drawWithShadow(matrices,module.getName(), 4, 4+(index * mc.textRenderer.fontHeight), -1);
             index++;
         }
     }

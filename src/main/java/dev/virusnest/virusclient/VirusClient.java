@@ -3,13 +3,14 @@ package dev.virusnest.virusclient;
 import dev.virusnest.virusclient.module.Module;
 import dev.virusnest.virusclient.module.ModuleManager;
 import dev.virusnest.virusclient.ui.screens.clickgui.ClickGui;
+import dev.virusnest.virusclient.util.io.ConfigManager;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.client.screen.v1.Screens;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.screen.Screen;
 import org.lwjgl.glfw.GLFW;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
 
 public class VirusClient implements ModInitializer {
 	// This logger is used to write text to the console and the log file.
@@ -31,6 +32,12 @@ public class VirusClient implements ModInitializer {
 	public void postInit() {
 		//LOGGER.info("Postinit");
 		ModuleManager.genModules(ModuleManager.modules());
+		try {
+			ConfigManager.createConfig();
+			ConfigManager.loadConfig();
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 		//LOGGER.info("Postinit");
 	}
 	public void onTick(){

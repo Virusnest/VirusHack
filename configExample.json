@@ -1,0 +1,29 @@
+{
+  "Modules" : {
+    "Flight": {
+      "Settings": {
+        "mode":"as",
+        "state": true,
+        "value": 0
+        },
+      "Enabled": true
+    }
+  },
+
+  "Category": {
+    "MOVEMENT": {
+      "pos": [
+        1,
+        2
+      ],
+      "Enabled": true
+    },
+    "EXPOLIT": {
+      "pos": [
+        1,
+        2
+      ],
+      "Enabled": true
+    }
+  }
+}
